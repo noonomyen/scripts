@@ -1,6 +1,6 @@
 21a22
 > $prefix = '/home/runner/work/scripts/scripts';
-23,24c24,29
+23,24c24,33
 < // Path label can be overridden by a file named .dl-pathlabel
 < $pathlabel = file_exists('.dl-pathlabel') ? file_get_contents('.dl-pathlabel') : $path ;
 ---
@@ -10,9 +10,13 @@
 > }
 > 
 > $pathlabel = substr($path, strlen($prefix));
-107d111
+> 
+> if (strlen($pathlabel) == 0) {
+>     $pathlabel = '/';
+> }
+107d115
 <     $os = PHP_OS;
-113c117
+113c121
 < directory-listing.php/$version <small>($os) PHP/$php compiled at <time datetime="$time">$date</time> in {$processingTime}ms</small>
 ---
 > Directory listing/$version patched <small>PHP/$php compiled at <time datetime="$time">$date</time></small>
